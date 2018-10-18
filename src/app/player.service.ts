@@ -13,7 +13,7 @@ const httpOptions = {
 @Injectable({ providedIn: 'root' })
 export class PlayerService {
 
-  private teamsUrl = 'http://localhost:8080' ;  // URL to web api
+  private teamsUrl = 'https://springsoccer.herokuapp.com/' ;  // URL to web api
 
   constructor(
     private http: HttpClient) { }

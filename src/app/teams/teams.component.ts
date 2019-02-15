@@ -29,8 +29,9 @@ export class TeamsComponent implements OnInit {
 
 
 
-  getPlayers(): void {
+ /* getPlayers(): void {
     this.playerService.getAllPlayers().subscribe( players => this.players= players);
   }
+  */
 
 }

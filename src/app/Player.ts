@@ -3,6 +3,6 @@ export class Player {
   playerID: number;
   playerName: string;
   position: string;
-  team: String;
+  team: string;
   tid: number;
 }

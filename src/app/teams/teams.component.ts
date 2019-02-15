@@ -11,6 +11,8 @@ import {PlayerService} from '../player.service';
 export class TeamsComponent implements OnInit {
   teams: Team [];
 
+  players: Player [];
+
   constructor(private playerService: PlayerService) {
   }
 
@@ -23,6 +25,12 @@ export class TeamsComponent implements OnInit {
   sortTeams(teams: Team[]): void {
     teams.sort((a, b) => a.teamID - b.teamID);
     this.teams = teams;
+  }
+
+
+
+  getPlayers(): void {
+    this.playerService.getAllPlayers().subscribe( players => this.players= players);
   }
 
 }

@@ -15,6 +15,7 @@ export class PlayerService {
 
   private teamsUrl = 'https://springsoccer.herokuapp.com/' ;  // URL to web api
 
+  // private teamsUrl = 'http://localhost:8080/';
   constructor(
     private http: HttpClient) { }
 
@@ -29,6 +30,13 @@ export class PlayerService {
       catchError(this.handleError<Team []>( `got teams`)));
   }
 
+  getAllPlayers (term: String): Observable<Player []>{
+    return this.http.get<Player []> (`${this.teamsUrl}/search/${term}`).pipe(map( res => {
+      return res as Player [];
+    }),
+      tap(_ => this.log(`got list of players`)),
+      catchError(this.handleError<Player []> (`tried to get players`)));
+  }
 
   // getPlayers (id: number): Observable<Player[]> {
   //   const url = `${this.teamsUrl}/${id}`;
@@ -78,6 +86,7 @@ export class PlayerService {
     }),  tap( _ => this.log(`fetched player`)),
       catchError(this.handleError<Player>( `saved player ${player.playerName}`)));
   }
+
 
 
   private handleError<T> (operation = 'operation', result?: T) {

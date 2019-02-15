@@ -11,13 +11,15 @@ import { TeamdetailComponent } from './teamdetail/teamdetail.component';
 import { PlayerdetailComponent } from './playerdetail/playerdetail.component';
 import {FormsModule} from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { PlayerSearchComponent } from './player-search/player-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamsComponent,
     TeamdetailComponent,
-    PlayerdetailComponent
+    PlayerdetailComponent,
+    PlayerSearchComponent
   ],
   imports: [
     BrowserModule,

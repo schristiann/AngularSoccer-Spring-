@@ -5,5 +5,5 @@ export class Team {
   teamID: number;
   teamName: string;
   players: Player [];
-  banner: String;
+  banner: string;
 }

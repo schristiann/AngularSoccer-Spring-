@@ -6,6 +6,7 @@ import { Player} from './Player';
 import { Team} from './Team';
 import {st} from '@angular/core/src/render3';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -16,6 +17,7 @@ export class PlayerService {
   private teamsUrl = 'https://springsoccer.herokuapp.com/' ;  // URL to web api
 
   // private teamsUrl = 'http://localhost:8080/';
+  
   constructor(
     private http: HttpClient) { }
 
@@ -31,11 +33,18 @@ export class PlayerService {
   }
 
   getAllPlayers (term: String): Observable<Player []>{
-    return this.http.get<Player []> (`${this.teamsUrl}/search/${term}`).pipe(map( res => {
-      return res as Player [];
-    }),
-      tap(_ => this.log(`got list of players`)),
-      catchError(this.handleError<Player []> (`tried to get players`)));
+      if(term.trim().length==0) {
+        const mocked: Player [] = [];
+        return of(mocked);
+      }
+      else {
+        return this.http.get<Player []>(`${this.teamsUrl}/search/${term}`).pipe(map(res => {
+            return res as Player [];
+          }),
+          tap(_ => this.log(`got list of players`)),
+          catchError(this.handleError<Player []>(`tried to get players`)));
+      }
+
   }
 
   // getPlayers (id: number): Observable<Player[]> {

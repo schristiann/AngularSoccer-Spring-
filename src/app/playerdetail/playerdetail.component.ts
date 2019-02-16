@@ -3,7 +3,10 @@ import {Team} from '../Team';
 import {Player} from '../Player';
 import {PlayerService} from '../player.service';
 import {Location} from '@angular/common';
+import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel, RoutesRecognized } from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+
+
 
 @Component({
   selector: 'app-playerdetail',
@@ -16,8 +19,17 @@ export class PlayerdetailComponent implements OnInit {
   constructor(
     private playerService: PlayerService,
     private route: ActivatedRoute,
-    private location: Location
-  ) { }
+    private location: Location,
+    private router: Router
+  ) { this.router.events.subscribe((event) => {
+    if (event instanceof NavigationEnd) {
+     this.getPlayer()
+    }
+    if (event instanceof NavigationError) {
+      console.log(event.error);
+    }
+  });
+  }
 
   ngOnInit() {
     this.getPlayer();

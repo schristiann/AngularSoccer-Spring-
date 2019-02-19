@@ -1,4 +1,4 @@
-<div style="align-items: center">
+<div *ngIf="teams; else loading" style="align-items: center">
 <ul class="teams">
   <li *ngFor="let team of teams">
     <a routerLink="/teams/{{team._id}}">
@@ -7,3 +7,7 @@
   </li>
 </ul>
 </div>
+
+<ng-template #loading>
+  <div style="align-items: center">Loading...</div>
+</ng-template>

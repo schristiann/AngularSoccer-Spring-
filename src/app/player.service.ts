@@ -17,7 +17,7 @@ export class PlayerService {
   private teamsUrl = 'https://springsoccer.herokuapp.com/' ;  // URL to web api
 
   // private teamsUrl = 'http://localhost:8080/';
-  
+
   constructor(
     private http: HttpClient) { }
 
